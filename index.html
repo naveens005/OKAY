@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey Keerthu (Dora) 🐼✨ | Everything Will Be Alright</title>
+  <meta name="description" content="A cheerful, friendly, and comforting space made to bring a smile to my friend Keerthu (Dora). Everything will be alright!">
+  
+  <!-- Google Fonts: Fredoka (headings), Nunito (body), Caveat & Dancing Script (letter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%22.9em%22 font-size=%2290%22>🐼</text></svg>">
+</head>
+<body>
+  <!-- Ambient Floating Background Particles Canvas -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Clouds & Sky Accents -->
+  <div class="sky-elements" aria-hidden="true">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- Cursor Follower Trail Container -->
+  <div id="cursor-trail" aria-hidden="true"></div>
+
+  <!-- Audio Toggle Element & Ambient Synth -->
+  <audio id="bg-audio" loop preload="none"></audio>
+
+  <!-- Sticky Soft Pink Navigation -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="main-nav" aria-label="Main Navigation">
+      <a href="#hero" class="nav-brand" aria-label="Home">
+        <span class="nav-brand-panda">🐼</span>
+        <span class="nav-brand-text">For Dora <span class="nav-star-pulse">✨</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#pandas-row" class="nav-link">Pandas</a>
+        <a href="#comfort-section" class="nav-link">Cheer Hub</a>
+        <a href="#stickers-section" class="nav-link">Stickers</a>
+        <a href="#reasons-section" class="nav-link">Reasons</a>
+        <a href="#letter-section" class="nav-link">Friend's Note</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Audio Music Toggle -->
+        <button id="music-btn" class="nav-btn music-btn" aria-label="Toggle soothing background music" title="Toggle soothing music">
+          <span class="music-icon" id="music-icon">🎵</span>
+          <span class="music-text">Lofi Tune</span>
+        </button>
+        <!-- Sound FX Mute Toggle -->
+        <button id="sfx-btn" class="nav-btn sfx-btn" aria-label="Toggle sound effects" title="Toggle cute sound effects">
+          <span id="sfx-icon">🔔</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="page-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-sparkle">✨</span>
+          <span class="badge-text" id="hero-badge-text">Your personal cheer squad & safe space</span>
+          <span class="badge-sparkle">✨</span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          <span class="title-text">Hey Keerthu</span>
+          <span class="title-nickname">(Dora)</span>
+          <span class="title-emojis">🐼✨</span>
+        </h1>
+
+        <div class="hero-subtitle-box">
+          <p class="hero-subtitle typewriter-text" id="typewriter-subtitle" aria-live="polite">
+            Everything will be alright. You are an awesome friend, strong, and you've got this!
+          </p>
+        </div>
+
+        <!-- Quick Interaction Actions -->
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-bounce" id="hug-btn-hero">
+            <span class="btn-icon">🙌</span>
+            <span>Panda High-Five!</span>
+          </button>
+          <button class="btn btn-secondary" id="cheer-btn-hero">
+            <span class="btn-icon">✨</span>
+            <span>Cheer me up</span>
+          </button>
+          <button class="btn btn-soft" id="breath-btn-hero">
+            <span class="btn-icon">🌸</span>
+            <span>Breathe with panda</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- DANCING PANDAS ROW -->
+      <div class="dancing-pandas-container" id="pandas-row" aria-label="Dancing Panda Friends">
+        <div class="pandas-title-wrap">
+          <h2 class="section-tagline">Tap on any panda for a cheerful boost! 🐾</h2>
+        </div>
+
+        <div class="pandas-track" id="pandas-track">
+          <!-- Panda 1: Bow - Bouncing -->
+          <div class="panda-card" data-panda="1" tabindex="0" role="button" aria-label="Bouncing panda with pink bow">
+            <div class="speech-bubble" id="bubble-1">Stay smiling, Dora! 🌸</div>
+            <div class="panda-character panda-dance-bounce" id="panda-1">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <!-- Accessory: Pink Bow -->
+                <g class="accessory-bow" transform="translate(42, 10)">
+                  <path d="M15,15 C5,5 0,18 12,24 C0,30 5,43 15,33 C25,43 30,30 18,24 C30,18 25,5 15,15 Z" fill="#FF7597"/>
+                  <circle cx="15" cy="24" r="5" fill="#FFD1DC"/>
+                </g>
+                <!-- Left Ear -->
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <!-- Right Ear -->
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <!-- Body -->
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <path d="M45,108 C35,120 35,145 52,156 C68,164 92,164 108,156 C125,145 125,120 115,108 Z" fill="#FFF5F7"/>
+                <!-- Left Arm (Waving) -->
+                <path class="arm-left arm-wave" d="M38,98 C20,95 10,75 22,65 C32,58 45,78 43,96 Z" fill="#24262E"/>
+                <!-- Right Arm -->
+                <path class="arm-right" d="M122,98 C140,105 148,125 138,138 C128,145 115,125 117,102 Z" fill="#24262E"/>
+                <!-- Feet -->
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <!-- Head -->
+                <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                <!-- Eye Patches -->
+                <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                <!-- Eyes (Blinking) -->
+                <g class="eyes-blinking">
+                  <ellipse cx="59" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="61" cy="67" r="4" fill="#000000"/>
+                  <circle cx="63" cy="65" r="1.8" fill="#FFFFFF"/>
+                  <ellipse cx="101" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="99" cy="67" r="4" fill="#000000"/>
+                  <circle cx="97" cy="65" r="1.8" fill="#FFFFFF"/>
+                </g>
+                <!-- Blush Cheeks -->
+                <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <!-- Cute Nose and Smile -->
+                <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                <path d="M75,81 Q80,87 85,81" fill="none" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Bouncy Panda 🎀</div>
+          </div>
+
+          <!-- Panda 2: Crown - Swaying (Holding Lucky Clover) -->
+          <div class="panda-card" data-panda="2" tabindex="0" role="button" aria-label="Swaying panda with golden crown">
+            <div class="speech-bubble" id="bubble-2">You're a rockstar! 🌟</div>
+            <div class="panda-character panda-dance-sway" id="panda-2">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <!-- Accessory: Tiny Crown -->
+                <g class="accessory-crown" transform="translate(62, 10)">
+                  <path d="M0,20 L8,6 L18,15 L28,6 L36,20 Z" fill="#FFD700" stroke="#E6A800" stroke-width="1.5"/>
+                  <circle cx="8" cy="6" r="3" fill="#FF6B8B"/>
+                  <circle cx="18" cy="15" r="2.5" fill="#38D9A9"/>
+                  <circle cx="28" cy="6" r="3" fill="#FF6B8B"/>
+                </g>
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <!-- Arms holding lucky golden star -->
+                <path class="arm-left" d="M38,98 C25,108 30,125 50,124 C60,122 62,108 45,98 Z" fill="#24262E"/>
+                <path class="arm-right" d="M122,98 C135,108 130,125 110,124 C100,122 98,108 115,98 Z" fill="#24262E"/>
+                <!-- Golden star between paws -->
+                <g transform="translate(80, 122) scale(0.9)">
+                  <polygon points="0,-12 3.5,-3.5 12,-3.5 5,2 7.5,10 0,5.5 -7.5,10 -5,2 -12,-3.5 -3.5,-3.5" fill="#FFD700" stroke="#E6A800" stroke-width="1.2"/>
+                </g>
+                <!-- Feet -->
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <!-- Head -->
+                <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                <g class="eyes-blinking">
+                  <ellipse cx="59" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="61" cy="67" r="4" fill="#000000"/>
+                  <circle cx="63" cy="65" r="1.8" fill="#FFFFFF"/>
+                  <ellipse cx="101" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="99" cy="67" r="4" fill="#000000"/>
+                  <circle cx="97" cy="65" r="1.8" fill="#FFFFFF"/>
+                </g>
+                <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                <path d="M75,81 Q80,87 85,81" fill="none" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Crown Panda 👑</div>
+          </div>
+
+          <!-- Panda 3: Cool Star Shades - Spin & Hip Shake -->
+          <div class="panda-card" data-panda="3" tabindex="0" role="button" aria-label="Dancing panda with cool sunglasses">
+            <div class="speech-bubble" id="bubble-3">Coolest friend around! 😎</div>
+            <div class="panda-character panda-dance-spin" id="panda-3">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <path class="arm-left" d="M38,98 C18,85 15,65 30,60 C42,56 46,80 43,96 Z" fill="#24262E"/>
+                <path class="arm-right" d="M122,98 C142,85 145,65 130,60 C118,56 114,80 117,102 Z" fill="#24262E"/>
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                <!-- Eye Patches -->
+                <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                <!-- Cool Round Dark Shades Overlay -->
+                <g class="accessory-glasses" transform="translate(0, 0)">
+                  <circle cx="58" cy="66" r="15" fill="#2C3E50"/>
+                  <circle cx="102" cy="66" r="15" fill="#2C3E50"/>
+                  <line x1="73" y1="66" x2="87" y2="66" stroke="#2C3E50" stroke-width="4"/>
+                  <!-- Lens glint -->
+                  <line x1="51" y1="60" x2="65" y2="72" stroke="#FFFFFF" stroke-width="2" opacity="0.6"/>
+                  <line x1="95" y1="60" x2="109" y2="72" stroke="#FFFFFF" stroke-width="2" opacity="0.6"/>
+                </g>
+                <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                <path d="M75,81 Q80,88 85,81" fill="none" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Cool Shades 🕶️</div>
+          </div>
+
+          <!-- Panda 4: Party Hat - Squash & Stretch Jump -->
+          <div class="panda-card" data-panda="4" tabindex="0" role="button" aria-label="Jumping panda with party hat">
+            <div class="speech-bubble" id="bubble-4">Cheering for Dora! 🎉</div>
+            <div class="panda-character panda-dance-jump" id="panda-4">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <!-- Accessory: Party Hat -->
+                <g class="accessory-partyhat" transform="translate(65, 8)">
+                  <polygon points="15,0 0,35 30,35" fill="#A29BFE"/>
+                  <polygon points="15,0 7,35 23,35" fill="#FD79A8"/>
+                  <circle cx="15" cy="0" r="4.5" fill="#FFEAA7"/>
+                  <circle cx="6" cy="35" r="2.5" fill="#55EFC4"/>
+                  <circle cx="15" cy="35" r="2.5" fill="#55EFC4"/>
+                  <circle cx="24" cy="35" r="2.5" fill="#55EFC4"/>
+                </g>
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <path class="arm-left arm-wave" d="M38,98 C18,80 12,60 28,52 C38,48 46,72 43,96 Z" fill="#24262E"/>
+                <path class="arm-right arm-wave-opp" d="M122,98 C142,80 148,60 132,52 C122,48 114,72 117,102 Z" fill="#24262E"/>
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                <g class="eyes-blinking">
+                  <path d="M53,68 Q58,62 64,68" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M96,68 Q101,62 107,68" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                </g>
+                <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                <path d="M74,81 Q80,89 86,81" fill="#FF6B8B" stroke="#24262E" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Jumpy Panda 🥳</div>
+          </div>
+
+          <!-- Panda 5: Bamboo Blossom - Head Bob -->
+          <div class="panda-card" data-panda="5" tabindex="0" role="button" aria-label="Head-bobbing panda with pink flower">
+            <div class="speech-bubble" id="bubble-5">Keep blooming, pal! 🌸</div>
+            <div class="panda-character panda-dance-bob" id="panda-5">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <!-- Accessory: Pink Blossom on Ear -->
+                <g class="accessory-flower" transform="translate(118, 22)">
+                  <circle cx="0" cy="-6" r="5" fill="#FF9EAA"/>
+                  <circle cx="6" cy="0" r="5" fill="#FF9EAA"/>
+                  <circle cx="0" cy="6" r="5" fill="#FF9EAA"/>
+                  <circle cx="-6" cy="0" r="5" fill="#FF9EAA"/>
+                  <circle cx="0" cy="0" r="4" fill="#FFEAA7"/>
+                </g>
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <path class="arm-left" d="M38,98 C25,115 40,125 55,118 C62,114 55,100 45,98 Z" fill="#24262E"/>
+                <path class="arm-right" d="M122,98 C135,115 120,125 105,118 C98,114 105,100 115,98 Z" fill="#24262E"/>
+                <!-- Bamboo stalk -->
+                <rect x="75" y="96" width="10" height="42" rx="4" fill="#55EFC4"/>
+                <line x1="75" y1="110" x2="85" y2="110" stroke="#00B894" stroke-width="2"/>
+                <ellipse cx="88" cy="104" rx="7" ry="3" fill="#00B894" transform="rotate(-30 88 104)"/>
+                <!-- Feet -->
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <!-- Head with head-bob class -->
+                <g class="panda-head-group">
+                  <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                  <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                  <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                  <g class="eyes-blinking">
+                    <ellipse cx="59" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                    <circle cx="61" cy="67" r="4" fill="#000000"/>
+                    <circle cx="63" cy="65" r="1.8" fill="#FFFFFF"/>
+                    <ellipse cx="101" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                    <circle cx="99" cy="67" r="4" fill="#000000"/>
+                    <circle cx="97" cy="65" r="1.8" fill="#FFFFFF"/>
+                  </g>
+                  <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                  <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                  <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                  <path d="M75,81 Q80,87 85,81" fill="none" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+                </g>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Bamboo Blossom 🎋</div>
+          </div>
+
+          <!-- Panda 6: Sparkle Wand - Wiggle & Wave -->
+          <div class="panda-card" data-panda="6" tabindex="0" role="button" aria-label="Wiggling panda with magic star wand">
+            <div class="speech-bubble" id="bubble-6">Friendship magic! ✨</div>
+            <div class="panda-character panda-dance-wiggle" id="panda-6">
+              <svg class="panda-svg" viewBox="0 0 160 170" xmlns="http://www.w3.org/2000/svg">
+                <!-- Magic Wand in right hand -->
+                <g class="accessory-wand" transform="translate(120, 45) rotate(25)">
+                  <line x1="0" y1="0" x2="0" y2="40" stroke="#FFEAA7" stroke-width="3.5" stroke-linecap="round"/>
+                  <polygon points="0,-10 3,-3 10,-3 4,2 6,9 0,5 -6,9 -4,2 -10,-3 -3,-3" fill="#FFD700"/>
+                </g>
+                <circle cx="34" cy="38" r="22" fill="#24262E"/>
+                <circle cx="34" cy="38" r="13" fill="#3D404D"/>
+                <circle cx="126" cy="38" r="22" fill="#24262E"/>
+                <circle cx="126" cy="38" r="13" fill="#3D404D"/>
+                <path d="M42,95 C30,120 30,150 48,162 C65,170 95,170 112,162 C130,150 130,120 118,95 Z" fill="#FFFFFF" stroke="#F1D1D8" stroke-width="2"/>
+                <path class="arm-left arm-wave" d="M38,98 C18,92 10,72 24,62 C34,55 45,75 43,96 Z" fill="#24262E"/>
+                <path class="arm-right" d="M122,98 C135,88 138,65 125,58 C116,52 112,75 117,102 Z" fill="#24262E"/>
+                <ellipse cx="50" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="50" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="110" cy="160" rx="18" ry="11" fill="#24262E"/>
+                <circle cx="110" cy="160" r="5" fill="#FF8DA1"/>
+                <ellipse cx="80" cy="72" rx="54" ry="46" fill="#FFFFFF" stroke="#F3D5DC" stroke-width="2"/>
+                <ellipse cx="58" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(-15 58 68)"/>
+                <ellipse cx="102" cy="68" rx="15" ry="19" fill="#24262E" transform="rotate(15 102 68)"/>
+                <g class="eyes-blinking">
+                  <ellipse cx="59" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="61" cy="67" r="4" fill="#000000"/>
+                  <circle cx="63" cy="65" r="1.8" fill="#FFFFFF"/>
+                  <ellipse cx="101" cy="68" rx="6" ry="7" fill="#FFFFFF"/>
+                  <circle cx="99" cy="67" r="4" fill="#000000"/>
+                  <circle cx="97" cy="65" r="1.8" fill="#FFFFFF"/>
+                </g>
+                <ellipse cx="44" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <ellipse cx="116" cy="86" rx="9" ry="5.5" fill="#FF8DA1" opacity="0.8"/>
+                <path d="M76,77 C77,75 83,75 84,77 C84,80 76,80 76,77 Z" fill="#24262E"/>
+                <path d="M75,81 Q80,87 85,81" fill="none" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="panda-name-tag">Star Wish 🌟</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CHEER HUB SECTION -->
+    <section class="section comfort-section" id="comfort-section">
+      <div class="section-header">
+        <span class="section-pill">Cheer Hub</span>
+        <h2 class="section-title">A Friendly Boost Just For You 🌸</h2>
+        <p class="section-desc">Whenever things feel tough or exhausting, take a break here for good laughs, deep breaths, and solid encouragement.</p>
+      </div>
+
+      <!-- Mood Check-in Selector -->
+      <div class="glass-card mood-card" id="mood-tracker">
+        <h3 class="card-title">How is Dora feeling today?</h3>
+        <p class="card-subtitle">No pressure at all. Just tap how it's going, buddy.</p>
+        
+        <div class="mood-btn-group" role="group" aria-label="Mood selector">
+          <button class="mood-btn" data-mood="happy" aria-label="Feeling happy or great">
+            <span class="mood-emoji">😊</span>
+            <span class="mood-label">Great</span>
+          </button>
+          <button class="mood-btn" data-mood="okay" aria-label="Feeling so-so">
+            <span class="mood-emoji">😐</span>
+            <span class="mood-label">So-so</span>
+          </button>
+          <button class="mood-btn" data-mood="sad" aria-label="Feeling down">
+            <span class="mood-emoji">😢</span>
+            <span class="mood-label">Down</span>
+          </button>
+          <button class="mood-btn" data-mood="overwhelmed" aria-label="Feeling overwhelmed">
+            <span class="mood-emoji">🥺</span>
+            <span class="mood-label">Busy / Stressed</span>
+          </button>
+          <button class="mood-btn" data-mood="tired" aria-label="Feeling tired or exhausted">
+            <span class="mood-emoji">😴</span>
+            <span class="mood-label">Exhausted</span>
+          </button>
+        </div>
+
+        <div class="mood-response-box" id="mood-response" aria-live="polite">
+          <div class="mood-panda-icon">🐼</div>
+          <div class="mood-reply-text" id="mood-reply-text">
+            Tap how you're feeling above, and your panda buddy will share some supportive words!
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Column Comfort Grid -->
+      <div class="comfort-grid">
+        
+        <!-- CARD 1: VIRTUAL HIGH FIVE / PANDA CHEER -->
+        <div class="glass-card hug-card" id="hug-card">
+          <div class="card-icon-badge">🙌</div>
+          <h3 class="card-title">Panda Buddy High-Five!</h3>
+          <p class="card-subtitle">A big warm energetic high-five from your panda buddy whenever you need a boost.</p>
+          
+          <div class="hug-stage" id="hug-stage" aria-hidden="true">
+            <div class="hug-panda-character" id="hug-panda">
+              <svg viewBox="0 0 180 180" class="hug-svg">
+                <!-- Panda big body -->
+                <circle cx="45" cy="45" r="22" fill="#24262E"/>
+                <circle cx="135" cy="45" r="22" fill="#24262E"/>
+                <ellipse cx="90" cy="115" rx="55" ry="50" fill="#FFFFFF" stroke="#FFD1DC" stroke-width="3"/>
+                <!-- Cheerful Face -->
+                <ellipse cx="90" cy="80" rx="50" ry="42" fill="#FFFFFF" stroke="#FFD1DC" stroke-width="3"/>
+                <!-- Eye patches -->
+                <ellipse cx="68" cy="76" rx="14" ry="17" fill="#24262E" transform="rotate(-15 68 76)"/>
+                <ellipse cx="112" cy="76" rx="14" ry="17" fill="#24262E" transform="rotate(15 112 76)"/>
+                <!-- Cheerful energetic eyes -->
+                <path d="M63,77 Q69,70 75,77" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M105,77 Q111,70 117,77" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+                <!-- Blushing -->
+                <ellipse cx="56" cy="90" rx="11" ry="6" fill="#FF8DA1" opacity="0.85"/>
+                <ellipse cx="124" cy="90" rx="11" ry="6" fill="#FF8DA1" opacity="0.85"/>
+                <!-- Nose & open smile -->
+                <ellipse cx="90" cy="86" rx="5" ry="3.5" fill="#24262E"/>
+                <path d="M84,92 Q90,102 96,92" fill="#FF6B8B" stroke="#24262E" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- High-five arms reaching up/forward -->
+                <path class="hug-arm-l" d="M40,105 Q15,85 25,65 Q45,75 50,100 Z" fill="#24262E"/>
+                <path class="hug-arm-r" d="M140,105 Q165,85 155,65 Q135,75 130,100 Z" fill="#24262E"/>
+                <!-- Golden Star badge between paws -->
+                <g transform="translate(90, 118)">
+                  <polygon points="0,-14 4,-4 14,-4 6,3 9,13 0,7 -9,13 -6,3 -14,-4 -4,-4" fill="#FFD700" stroke="#E6A800" stroke-width="1.5"/>
+                </g>
+              </svg>
+            </div>
+            <div class="hug-banner" id="hug-banner">
+              "We've got your back, Dora! High five! 🙌✨"
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="hug-action-btn">
+            <span class="btn-icon">🙌</span>
+            <span>Send Me A Panda High-Five!</span>
+          </button>
+        </div>
+
+        <!-- CARD 2: CHEER ME UP / RANDOM AFFIRMATION -->
+        <div class="glass-card cheer-card" id="cheer-card">
+          <div class="card-icon-badge">✨</div>
+          <h3 class="card-title">Cheer Me Up</h3>
+          <p class="card-subtitle">Draw a supportive reminder to give you a quick boost of confidence.</p>
+
+          <div class="affirmation-box" id="affirmation-box" tabindex="0">
+            <div class="quote-mark">“</div>
+            <p class="affirmation-text" id="affirmation-text">
+              You are stronger than you think, awesome at what you do, and you've got this, Dora!
+            </p>
+            <div class="affirmation-author">— Your Panda Cheer Squad 🐾</div>
+          </div>
+
+          <div class="card-actions-row">
+            <button class="btn btn-secondary btn-flex" id="new-cheer-btn">
+              <span class="btn-icon">🎲</span>
+              <span>New Boost</span>
+            </button>
+            <button class="btn btn-icon-only" id="copy-quote-btn" aria-label="Copy message" title="Copy quote">
+              📋
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: BREATHING BUDDY -->
+        <div class="glass-card breathing-card" id="breathing-card">
+          <div class="card-icon-badge">🧘‍♀️</div>
+          <h3 class="card-title">Breathing Buddy Panda</h3>
+          <p class="card-subtitle">Match your breath with the panda. Inhale calm focus, exhale the stress.</p>
+
+          <div class="breathing-stage">
+            <div class="breath-aura aura-3"></div>
+            <div class="breath-aura aura-2"></div>
+            <div class="breath-aura aura-1"></div>
+            <div class="breath-circle" id="breath-circle">
+              <div class="breath-panda-face">
+                <svg viewBox="0 0 100 100" class="mini-panda-svg">
+                  <circle cx="20" cy="25" r="16" fill="#24262E"/>
+                  <circle cx="80" cy="25" r="16" fill="#24262E"/>
+                  <circle cx="50" cy="50" r="38" fill="#FFFFFF"/>
+                  <ellipse cx="36" cy="46" rx="10" ry="12" fill="#24262E" transform="rotate(-15 36 46)"/>
+                  <ellipse cx="64" cy="46" rx="10" ry="12" fill="#24262E" transform="rotate(15 64 46)"/>
+                  <path d="M32,47 Q36,43 40,47" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M60,47 Q64,43 68,47" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+                  <ellipse cx="28" cy="58" rx="6" ry="4" fill="#FF8DA1" opacity="0.8"/>
+                  <ellipse cx="72" cy="58" rx="6" ry="4" fill="#FF8DA1" opacity="0.8"/>
+                  <circle cx="50" cy="55" r="3" fill="#24262E"/>
+                  <path d="M47,60 Q50,64 53,60" fill="none" stroke="#24262E" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="breath-status" id="breath-status" aria-live="polite">Breathe in...</div>
+            <div class="breath-timer" id="breath-timer">4s</div>
+          </div>
+
+          <div class="breath-controls">
+            <button class="btn btn-soft btn-full" id="breath-toggle-btn">
+              <span id="breath-btn-icon">⏸️</span>
+              <span id="breath-btn-text">Pause Breathing</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 4: GRATITUDE & GOOD VIBES JAR -->
+        <div class="glass-card jar-card" id="jar-card">
+          <div class="card-icon-badge">🫙</div>
+          <h3 class="card-title">Dora's Good Vibes & Daily Wins Jar</h3>
+          <p class="card-subtitle">Drop small good things, funny moments, or daily wins into your jar.</p>
+
+          <div class="jar-visual-container">
+            <div class="glass-jar" id="glass-jar">
+              <div class="jar-lid"></div>
+              <div class="jar-neck"></div>
+              <div class="jar-body" id="jar-body">
+                <!-- Stored star notes drop here -->
+                <div class="jar-empty-state" id="jar-empty-state">
+                  <span>Drop your first daily win below ⭐</span>
+                </div>
+              </div>
+              <div class="jar-glow"></div>
+            </div>
+
+            <div class="jar-notes-count">
+              <span id="notes-counter">0</span> good vibes preserved ⭐
+            </div>
+          </div>
+
+          <form class="jar-form" id="jar-form" onsubmit="return false;">
+            <div class="input-group">
+              <input 
+                type="text" 
+                id="jar-input" 
+                class="text-input" 
+                placeholder="e.g. A great cup of coffee, finished a task..." 
+                maxlength="75"
+                autocomplete="off"
+                required
+              >
+              <button type="submit" class="btn btn-primary" id="drop-note-btn">
+                <span>Drop In</span>
+                <span>⭐</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PANDA STICKER WALL SECTION -->
+    <section class="section stickers-section" id="stickers-section">
+      <div class="section-header">
+        <span class="section-pill">Interactive Play</span>
+        <h2 class="section-title">The Panda Sticker Wall 🎨</h2>
+        <p class="section-desc">
+          Drag and drop stickers anywhere! Make your own little collage, tap them to pop, or drop more whenever you wish.
+        </p>
+        <div class="stickers-toolbar">
+          <button class="btn btn-primary" id="add-more-stickers-btn">
+            <span class="btn-icon">➕</span>
+            <span>Drop More Stickers</span>
+          </button>
+          <button class="btn btn-soft" id="reset-stickers-btn">
+            <span class="btn-icon">🔄</span>
+            <span>Neat Layout</span>
+          </button>
+          <button class="btn btn-secondary" id="scatter-stickers-btn">
+            <span class="btn-icon">✨</span>
+            <span>Scatter Cheerfully</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sticker Canvas Workspace -->
+      <div class="sticker-wall-board" id="sticker-board" aria-label="Interactive draggable sticker wall">
+        <div class="board-watermark">Panda Joy Wall • Drag Me Around 🐾</div>
+      </div>
+    </section>
+
+    <!-- REASONS YOU ARE AWESOME FLIP CARDS -->
+    <section class="section reasons-section" id="reasons-section">
+      <div class="section-header">
+        <span class="section-pill">Reminders for Keerthu</span>
+        <h2 class="section-title">Reasons You Are Truly Awesome 🌟</h2>
+        <p class="section-desc">Tap any card to flip it over and read what makes you such a great pal.</p>
+      </div>
+
+      <div class="flip-cards-grid" id="reasons-grid">
+        <!-- Rendered dynamically from script.js CONFIG for super simple editing -->
+      </div>
+    </section>
+
+    <!-- PERSONAL FRIEND'S LETTER SECTION -->
+    <section class="section letter-section" id="letter-section">
+      <div class="section-header">
+        <span class="section-pill">Friendly Note</span>
+        <h2 class="section-title">A Quick Note From Your Friend 💌</h2>
+        <p class="section-desc">Click the golden star seal on the envelope to open this message.</p>
+      </div>
+
+      <div class="letter-experience">
+        <!-- Pink Envelope Component -->
+        <div class="envelope-wrapper" id="envelope-wrapper">
+          <div class="envelope" id="envelope" tabindex="0" role="button" aria-expanded="false" aria-label="Open letter envelope">
+            
+            <!-- Envelope Flap -->
+            <div class="envelope-flap" id="envelope-flap">
+              <div class="envelope-seal" id="envelope-seal" title="Click to open letter">
+                <span class="seal-icon">⭐</span>
+              </div>
+            </div>
+
+            <!-- Envelope Pocket/Front -->
+            <div class="envelope-pocket">
+              <div class="pocket-address">
+                <span class="address-to">To: Keerthu (Dora) 🌸</span>
+                <span class="address-sub">A friendly cheer-up note</span>
+              </div>
+            </div>
+
+            <!-- Letter Paper Sheet (slides up on open) -->
+            <article class="letter-sheet" id="letter-sheet">
+              <div class="letter-decor-top">
+                <span class="decor-panda">🐼</span>
+                <span class="decor-stars">✨ • 🌸 • ✨</span>
+                <span class="decor-panda">🐼</span>
+              </div>
+
+              <div class="letter-content" id="letter-content-body">
+                <!-- Populated from CONFIG so user can easily customize -->
+              </div>
+
+              <div class="letter-decor-bottom">
+                <span class="stamp-box">
+                  <span class="stamp-panda">🐼</span>
+                  <span class="stamp-text">FRIEND TO FRIEND</span>
+                </span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="envelope-hint" id="envelope-hint">
+          💌 Click on the envelope to read the note!
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrapper">
+    <div class="footer-content">
+      <div class="footer-pandas-row">
+        <div class="mini-dancing-panda mini-p1">🐼</div>
+        <div class="mini-dancing-panda mini-p2">🌸</div>
+        <div class="mini-dancing-panda mini-p3">🐼</div>
+        <div class="mini-dancing-panda mini-p4">⭐</div>
+        <div class="mini-dancing-panda mini-p5">🐼</div>
+      </div>
+
+      <h3 class="footer-quote">
+        "Everything will be alright. Always here to cheer you on, pal! 🐾✨"
+      </h3>
+
+      <p class="footer-subtext">
+        Created to bring a genuine smile to my awesome friend Keerthu (Dora).
+      </p>
+
+      <div class="footer-back-top">
+        <a href="#hero" class="btn btn-soft btn-sm">
+          <span>Back to Top 🐾</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
